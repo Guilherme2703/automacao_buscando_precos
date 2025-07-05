@@ -33,9 +33,12 @@ except:
 
 try:
     preco_amazon = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "a-price"))
-    )
-    print("Preço encontrado:", preco_amazon.text)
+        EC.presence_of_element_located((By.CLASS_NAME, 'a-price-whole'))
+    ).text
+    
+    preco_amazon = preco_amazon.replace('.', '')
+    preco_amazon = float(preco_amazon)
+    print(preco_amazon)
 except:
     print("Preço não encontrado.")
     
